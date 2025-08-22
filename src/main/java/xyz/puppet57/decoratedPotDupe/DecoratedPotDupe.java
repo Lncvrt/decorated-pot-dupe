@@ -13,6 +13,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.UUID;
 
 public class DecoratedPotDupe extends JavaPlugin implements Listener {
@@ -23,6 +24,9 @@ public class DecoratedPotDupe extends JavaPlugin implements Listener {
         // Register event listener
         Bukkit.getPluginManager().registerEvents(this, this);
         getLogger().info("PotDupe enabled! Go break some decorated pots >:)");
+
+        saveDefaultConfig();
+        reloadConfig();
     }
 
     @Override
@@ -40,6 +44,8 @@ public class DecoratedPotDupe extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onPotBreak(BlockBreakEvent event) {
+        float ItemMultiplier = Float.parseFloat(Objects.requireNonNull(getConfig().getString("item-multiplier")));
+
         Block block = event.getBlock();
 
         if (block.getType() != Material.DECORATED_POT) return;
@@ -56,7 +62,7 @@ public class DecoratedPotDupe extends JavaPlugin implements Listener {
                 if (item == null || item.getType().isAir()) continue;
 
                 int original = item.getAmount();
-                int duped = (int) Math.ceil(original * 1.3);
+                int duped = (int) Math.ceil(original * ItemMultiplier);
 
                 ItemStack dupedItem = item.clone();
                 dupedItem.setAmount(duped);
