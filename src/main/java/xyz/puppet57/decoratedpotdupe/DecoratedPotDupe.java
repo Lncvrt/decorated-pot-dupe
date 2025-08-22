@@ -1,4 +1,4 @@
-package xyz.puppet57.decoratedPotDupe;
+package xyz.puppet57.decoratedpotdupe;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;

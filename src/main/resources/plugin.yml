@@ -1,5 +1,0 @@
-name: decorated-pot-dupe
-version: '1.0-SNAPSHOT'
-main: xyz.puppet57.decoratedPotDupe.DecoratedPotDupe
-api-version: '1.21'
-description: A fabric mod to make it faster to put all your items in a decorated pot!
